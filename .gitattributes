@@ -1,0 +1,15 @@
+# Normalise line endings for text, and keep binaries byte-for-byte.
+# Without the binary rules below, Git's CRLF conversion on Windows would
+# rewrite bytes inside the PDF and corrupt it on checkout.
+
+* text=auto eol=lf
+
+*.pdf   binary
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.webp  binary
+*.ico   binary
+*.woff  binary
+*.woff2 binary

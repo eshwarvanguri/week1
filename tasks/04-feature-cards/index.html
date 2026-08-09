@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task 4 — Responsive Feature Cards (Flexbox &amp; Grid)</title>
+  <meta name="description" content="The same card set built twice — once with Flexbox, once with CSS Grid — to compare how each handles wrapping." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<!-- Task 4: responsive feature cards using Flexbox/Grid.
+     Building the same six cards with both layout systems makes the difference
+     obvious: Flexbox distributes leftover space along one axis, Grid keeps
+     tracks aligned in two. Resize the window and watch the last row. -->
+
+<body>
+  <header class="page-head">
+    <div class="wrap">
+      <span class="eyebrow">Task 4</span>
+      <h1>Feature cards, twice over</h1>
+      <p>
+        The same six cards laid out with Flexbox and then with CSS Grid. No media
+        queries are used for the card wrapping — <code>flex-wrap</code> and
+        <code>auto-fit</code> handle it.
+      </p>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <section>
+      <div class="section-head">
+        <h2>1 — Flexbox</h2>
+        <p>
+          <code>display: flex; flex-wrap: wrap;</code> with
+          <code>flex: 1 1 260px</code> on each card. Cards grow to fill the row,
+          so a lone card on the last row stretches full width.
+        </p>
+      </div>
+
+      <div class="cards flex-cards">
+        <article class="card">
+          <div class="ico" aria-hidden="true">&#9889;</div>
+          <h3>Fast</h3>
+          <p>Optimised assets and no framework overhead keep first paint under a second.</p>
+        </article>
+        <article class="card">
+          <div class="ico" aria-hidden="true">&#128241;</div>
+          <h3>Responsive</h3>
+          <p>One layout that holds together from a 320px phone to a widescreen monitor.</p>
+        </article>
+        <article class="card">
+          <div class="ico" aria-hidden="true">&#9855;</div>
+          <h3>Accessible</h3>
+          <p>Semantic markup, visible focus rings and colour contrast that passes AA.</p>
+        </article>
+        <article class="card">
+          <div class="ico" aria-hidden="true">&#128274;</div>
+          <h3>Secure</h3>
+          <p>HTTPS everywhere, escaped output and no third-party trackers.</p>
+        </article>
+        <article class="card">
+          <div class="ico" aria-hidden="true">&#127912;</div>
+          <h3>Themeable</h3>
+          <p>Colours live in CSS custom properties, so a new theme is a token swap.</p>
+        </article>
+        <article class="card">
+          <div class="ico" aria-hidden="true">&#128736;</div>
+          <h3>Maintainable</h3>
+          <p>Small, commented files that another developer can pick up cold.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>2 — CSS Grid</h2>
+        <p>
+          <code>grid-template-columns: repeat(auto-fit, minmax(250px, 1fr))</code>.
+          Columns are equal by definition and rows stay aligned, so a lone card on
+          the last row keeps its column width instead of stretching.
+        </p>
+      </div>
+
+      <div class="cards grid-cards">
+        <article class="card">
+          <div class="ico" aria-hidden="true">&#128200;</div>
+          <h3>Analytics</h3>
+          <p>Track what people actually do, without following them around the web.</p>
+        </article>
+        <article class="card">
+          <div class="ico" aria-hidden="true">&#128172;</div>
+          <h3>Collaboration</h3>
+          <p>Comments and mentions that land in the right inbox at the right time.</p>
+        </article>
+        <article class="card">
+          <div class="ico" aria-hidden="true">&#128257;</div>
+          <h3>Sync</h3>
+          <p>Changes land on every device within a second of being made.</p>
+        </article>
+        <article class="card">
+          <div class="ico" aria-hidden="true">&#128193;</div>
+          <h3>Storage</h3>
+          <p>Versioned files with a full history and one-click restore.</p>
+        </article>
+        <article class="card">
+          <div class="ico" aria-hidden="true">&#128276;</div>
+          <h3>Alerts</h3>
+          <p>Notifications you can tune, so the important ones still get noticed.</p>
+        </article>
+        <article class="card">
+          <div class="ico" aria-hidden="true">&#128295;</div>
+          <h3>Automations</h3>
+          <p>Rules that handle the repetitive parts of the workflow for you.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>3 — A Grid feature Flexbox can't match</h2>
+        <p>
+          Named areas let one card span two columns and two rows at a wide viewport,
+          and collapse back to a single stack on mobile — laid out in two dimensions
+          at once.
+        </p>
+      </div>
+
+      <div class="bento">
+        <article class="card feature-lg">
+          <div class="ico" aria-hidden="true">&#11088;</div>
+          <h3>Featured</h3>
+          <p>
+            This card claims two columns and two rows via <code>grid-area</code>.
+            Below 720px the whole grid falls back to one column and every card
+            takes an equal share.
+          </p>
+        </article>
+        <article class="card"><h3>Reports</h3><p>Scheduled exports in CSV or PDF.</p></article>
+        <article class="card"><h3>Roles</h3><p>Granular permissions per workspace.</p></article>
+        <article class="card"><h3>API</h3><p>A documented REST API with webhooks.</p></article>
+        <article class="card"><h3>Audit</h3><p>Every change, logged and searchable.</p></article>
+      </div>
+    </section>
+
+    <p><a class="back" href="../../index.html">&larr; Back to the portfolio</a></p>
+  </main>
+</body>
+</html>

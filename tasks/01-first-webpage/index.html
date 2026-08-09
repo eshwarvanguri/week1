@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task 1 — My First Web Page</title>
+  <meta name="description" content="A plain semantic HTML5 document with no CSS, showing the structural elements of a web page." />
+</head>
+
+<!--
+  Task 1: Create your first HTML webpage.
+
+  Deliberately unstyled. The point of this page is the structure: every element
+  below is chosen for what it *means*, not for how it looks. Open it in a
+  browser and the default styles show the document outline the markup creates.
+-->
+
+<body>
+  <header>
+    <h1>My First Web Page</h1>
+    <p><strong>Eshwar Vanguri</strong> — Traidix Tech, Week 1</p>
+
+    <nav aria-label="Page sections">
+      <ul>
+        <li><a href="#what-is-html">What is HTML?</a></li>
+        <li><a href="#semantics">Why semantic tags</a></li>
+        <li><a href="#how-web-works">How the web works</a></li>
+        <li><a href="#elements">Common elements</a></li>
+        <li><a href="#form">A basic form</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <hr />
+
+  <main>
+    <section id="what-is-html">
+      <h2>What is HTML?</h2>
+      <p>
+        HTML (HyperText Markup Language) describes the <em>structure and meaning</em>
+        of a page. It is not a programming language — there are no loops or
+        variables. Each tag labels a piece of content so browsers, search engines
+        and screen readers all know what they are looking at.
+      </p>
+      <p>
+        A minimal document needs four things: a <code>&lt;!DOCTYPE html&gt;</code>
+        declaration, an <code>&lt;html&gt;</code> root with a <code>lang</code>
+        attribute, a <code>&lt;head&gt;</code> for metadata, and a
+        <code>&lt;body&gt;</code> for everything visible.
+      </p>
+    </section>
+
+    <section id="semantics">
+      <h2>Why semantic tags matter</h2>
+      <p>
+        <code>&lt;div&gt;</code> means nothing. <code>&lt;nav&gt;</code> means
+        "this is navigation". Swapping generic containers for semantic ones costs
+        nothing and buys three things:
+      </p>
+      <ol>
+        <li><strong>Accessibility</strong> — screen readers can jump between landmarks.</li>
+        <li><strong>SEO</strong> — crawlers understand what the content is about.</li>
+        <li><strong>Maintainability</strong> — the markup reads like an outline.</li>
+      </ol>
+
+      <h3>Landmarks used on this page</h3>
+      <table>
+        <caption>Semantic elements and their roles</caption>
+        <thead>
+          <tr><th scope="col">Element</th><th scope="col">Purpose</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>&lt;header&gt;</code></td><td>Introductory content for the page or a section</td></tr>
+          <tr><td><code>&lt;nav&gt;</code></td><td>A block of navigation links</td></tr>
+          <tr><td><code>&lt;main&gt;</code></td><td>The dominant content — one per page</td></tr>
+          <tr><td><code>&lt;section&gt;</code></td><td>A thematic grouping, normally with a heading</td></tr>
+          <tr><td><code>&lt;article&gt;</code></td><td>Content that stands on its own</td></tr>
+          <tr><td><code>&lt;aside&gt;</code></td><td>Tangentially related content</td></tr>
+          <tr><td><code>&lt;figure&gt;</code></td><td>Self-contained media with a caption</td></tr>
+          <tr><td><code>&lt;footer&gt;</code></td><td>Closing content for the page or a section</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="how-web-works">
+      <h2>How the web works</h2>
+      <p>Typing an address and pressing Enter sets off a short chain of events:</p>
+      <ol>
+        <li><strong>DNS lookup</strong> — the domain name is resolved to an IP address.</li>
+        <li><strong>TCP/TLS handshake</strong> — a connection is opened and, over HTTPS, encrypted.</li>
+        <li><strong>HTTP request</strong> — the browser asks the server for a resource.</li>
+        <li><strong>HTTP response</strong> — the server replies with a status code and the HTML.</li>
+        <li><strong>Rendering</strong> — the browser parses HTML into the DOM, applies CSS, runs JavaScript and paints.</li>
+      </ol>
+
+      <aside>
+        <h3>Frontend vs backend</h3>
+        <p>
+          The <strong>frontend</strong> is everything running in the browser:
+          HTML, CSS and JavaScript. The <strong>backend</strong> runs on the
+          server: application code, databases and APIs. They meet at the HTTP
+          request — the frontend asks, the backend answers.
+        </p>
+      </aside>
+    </section>
+
+    <section id="elements">
+      <h2>Common elements</h2>
+
+      <h3>Text</h3>
+      <p>
+        You can make text <strong>important</strong>, <em>emphasised</em>,
+        <mark>highlighted</mark>, <small>small</small>, <del>struck through</del>
+        or <ins>inserted</ins>. Inline code looks like <code>const x = 1;</code>,
+        and H<sub>2</sub>O sits next to E = mc<sup>2</sup>.
+      </p>
+
+      <blockquote cite="https://www.w3.org/People/Berners-Lee/">
+        <p>The Web does not just connect machines, it connects people.</p>
+        <footer>— <cite>Tim Berners-Lee</cite></footer>
+      </blockquote>
+
+      <h3>A code block</h3>
+      <pre><code>&lt;figure&gt;
+  &lt;img src="photo.jpg" alt="A short description" /&gt;
+  &lt;figcaption&gt;What the image shows&lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+
+      <h3>Lists</h3>
+      <p>Unordered, for items with no inherent sequence:</p>
+      <ul>
+        <li>HTML — structure</li>
+        <li>CSS — presentation</li>
+        <li>JavaScript — behaviour</li>
+      </ul>
+
+      <p>Description lists, for term/definition pairs:</p>
+      <dl>
+        <dt>DOM</dt>
+        <dd>The tree of objects the browser builds from your HTML.</dd>
+        <dt>Viewport</dt>
+        <dd>The visible area of the page inside the browser window.</dd>
+      </dl>
+
+      <h3>An image with a caption</h3>
+      <figure>
+        <!-- Inline SVG keeps this page self-contained: no external files. -->
+        <svg width="320" height="140" viewBox="0 0 320 140" role="img" aria-label="Diagram: browser sends a request to a server, server sends a response back">
+          <rect x="4" y="34" width="110" height="60" rx="8" fill="#eaeeff" stroke="#3b5bfd" />
+          <text x="59" y="70" text-anchor="middle" font-size="14" fill="#16181d">Browser</text>
+          <rect x="206" y="34" width="110" height="60" rx="8" fill="#eaeeff" stroke="#3b5bfd" />
+          <text x="261" y="70" text-anchor="middle" font-size="14" fill="#16181d">Server</text>
+          <path d="M118 54h84" stroke="#3b5bfd" stroke-width="2" marker-end="url(#a)" />
+          <path d="M202 78h-84" stroke="#3b5bfd" stroke-width="2" marker-end="url(#a)" />
+          <text x="160" y="46" text-anchor="middle" font-size="11" fill="#5b6272">request</text>
+          <text x="160" y="98" text-anchor="middle" font-size="11" fill="#5b6272">response</text>
+          <defs>
+            <marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+              <path d="M0 0l8 4-8 4z" fill="#3b5bfd" />
+            </marker>
+          </defs>
+        </svg>
+        <figcaption>Figure 1 — the request/response cycle in one picture.</figcaption>
+      </figure>
+
+      <h3>Links</h3>
+      <ul>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" rel="noopener noreferrer">MDN HTML reference</a> (opens in a new tab)</li>
+        <li><a href="#what-is-html">Jump back to the top section</a></li>
+        <li><a href="mailto:eshwarvanguri@gmail.com">Send me an email</a></li>
+      </ul>
+    </section>
+
+    <section id="form">
+      <h2>A basic form</h2>
+      <p>Unstyled, but fully labelled — every control is reachable by keyboard and announced correctly.</p>
+
+      <form action="#" method="post">
+        <fieldset>
+          <legend>Say hello</legend>
+
+          <p>
+            <label for="visitor-name">Your name</label><br />
+            <input type="text" id="visitor-name" name="visitor-name" required />
+          </p>
+
+          <p>
+            <label for="visitor-email">Your email</label><br />
+            <input type="email" id="visitor-email" name="visitor-email" required />
+          </p>
+
+          <p>
+            <label for="topic">Topic</label><br />
+            <select id="topic" name="topic">
+              <option value="html">HTML</option>
+              <option value="css">CSS</option>
+              <option value="js">JavaScript</option>
+            </select>
+          </p>
+
+          <p>
+            <label for="note">Message</label><br />
+            <textarea id="note" name="note" rows="4" cols="40"></textarea>
+          </p>
+
+          <p>
+            <input type="checkbox" id="subscribe" name="subscribe" />
+            <label for="subscribe">Email me when new work is published</label>
+          </p>
+
+          <p>
+            <button type="submit">Send</button>
+            <button type="reset">Reset</button>
+          </p>
+        </fieldset>
+      </form>
+    </section>
+  </main>
+
+  <hr />
+
+  <footer>
+    <p><a href="../../index.html">&larr; Back to the portfolio</a></p>
+    <p><small>&copy; 2026 Eshwar Vanguri — Traidix Tech, Week 1, Task 1.</small></p>
+  </footer>
+</body>
+</html>

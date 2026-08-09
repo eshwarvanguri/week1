@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task 2 — Responsive Landing Page</title>
+  <meta name="description" content="A mobile-first product landing page built with HTML5 and CSS3." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<!-- Task 3 of the brief: design a responsive landing page using HTML & CSS.
+     No JavaScript at all — every layout change is done with media queries. -->
+
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="logo" href="#top">Bloom<span>.</span></a>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+      <a class="btn btn-primary" href="#pricing">Start free</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="badge">New — v2.0 is out</span>
+          <h1>Plant your ideas. Watch them grow.</h1>
+          <p class="lead">
+            Bloom is a workspace for small teams that would rather ship than sit in
+            status meetings. Plan, track and launch — all in one place.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#pricing">Get started free</a>
+            <a class="btn btn-ghost" href="#features">See how it works</a>
+          </div>
+          <p class="hero-note">No credit card required · Free for up to 5 people</p>
+        </div>
+
+        <div class="hero-art" aria-hidden="true">
+          <div class="mock">
+            <div class="bar w45 accent"></div>
+            <div class="bar w70"></div>
+            <div class="row">
+              <div class="tile"></div>
+              <div class="tile"></div>
+              <div class="tile"></div>
+            </div>
+            <div class="bar w70"></div>
+            <div class="bar w45"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="logos">
+      <div class="wrap">
+        <p>Trusted by teams at</p>
+        <ul>
+          <li>NORTHWIND</li><li>Acme Co.</li><li>Lumen</li>
+          <li>Fernwood</li><li>Vertex</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="features">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Everything you need, nothing you don't</h2>
+          <p>Six features that cover the whole loop from idea to launch.</p>
+        </div>
+
+        <div class="features">
+          <article class="feature">
+            <div class="ico" aria-hidden="true">&#9889;</div>
+            <h3>Fast by default</h3>
+            <p>Pages load in under a second, even on a patchy mobile connection.</p>
+          </article>
+          <article class="feature">
+            <div class="ico" aria-hidden="true">&#128101;</div>
+            <h3>Built for teams</h3>
+            <p>Comments, mentions and shared boards keep everyone on the same page.</p>
+          </article>
+          <article class="feature">
+            <div class="ico" aria-hidden="true">&#128274;</div>
+            <h3>Private by design</h3>
+            <p>Encrypted at rest and in transit. Your data is never sold or shared.</p>
+          </article>
+          <article class="feature">
+            <div class="ico" aria-hidden="true">&#128241;</div>
+            <h3>Works everywhere</h3>
+            <p>One responsive interface from a 320px phone to an ultrawide monitor.</p>
+          </article>
+          <article class="feature">
+            <div class="ico" aria-hidden="true">&#128200;</div>
+            <h3>Insights that matter</h3>
+            <p>See where work stalls before it turns into a missed deadline.</p>
+          </article>
+          <article class="feature">
+            <div class="ico" aria-hidden="true">&#128295;</div>
+            <h3>Fits your stack</h3>
+            <p>Integrations for GitHub, Slack, Figma and anything with a webhook.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing" class="pricing">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Simple pricing</h2>
+          <p>Start free, upgrade when the team grows. Cancel any time.</p>
+        </div>
+
+        <div class="plans">
+          <article class="plan">
+            <h3>Starter</h3>
+            <p class="price">$0<small> /month</small></p>
+            <ul>
+              <li>Up to 5 members</li>
+              <li>3 active projects</li>
+              <li>Community support</li>
+            </ul>
+            <a class="btn btn-ghost" href="#top">Choose Starter</a>
+          </article>
+
+          <article class="plan featured">
+            <h3>Team</h3>
+            <p class="price">$12<small> /user /month</small></p>
+            <ul>
+              <li>Unlimited members</li>
+              <li>Unlimited projects</li>
+              <li>Advanced insights</li>
+              <li>Priority support</li>
+            </ul>
+            <a class="btn btn-primary" href="#top">Choose Team</a>
+          </article>
+
+          <article class="plan">
+            <h3>Business</h3>
+            <p class="price">$29<small> /user /month</small></p>
+            <ul>
+              <li>Everything in Team</li>
+              <li>SSO &amp; audit logs</li>
+              <li>Custom contracts</li>
+              <li>Dedicated manager</li>
+            </ul>
+            <a class="btn btn-ghost" href="#top">Talk to sales</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Frequently asked</h2>
+          <p>Built with the native <code>&lt;details&gt;</code> element — no JavaScript needed.</p>
+        </div>
+
+        <details>
+          <summary>Is the free plan really free?</summary>
+          <p>Yes. Up to five people, forever, with no card on file.</p>
+        </details>
+        <details>
+          <summary>Can I change plans later?</summary>
+          <p>Any time, in one click. Changes are prorated to the day.</p>
+        </details>
+        <details>
+          <summary>Do you have a mobile app?</summary>
+          <p>The web app is fully responsive today; native apps arrive next quarter.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="wrap">
+        <div class="box">
+          <h2>Ready to start?</h2>
+          <p>Set up your first project in under two minutes.</p>
+          <a class="btn" href="#top">Create a free account</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <h4>Bloom</h4>
+          <p style="font-size:.93rem;margin:0">A workspace for teams that ship.</p>
+        </div>
+        <div>
+          <h4>Product</h4>
+          <ul>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#top">About</a></li>
+            <li><a href="#top">Careers</a></li>
+            <li><a href="#top">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#top">Privacy</a></li>
+            <li><a href="#top">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Bloom — a practice project, not a real product.</p>
+        <p><a href="../../index.html">&larr; Back to the portfolio</a></p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

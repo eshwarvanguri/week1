@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task 3 — Responsive Navigation Bar</title>
+  <meta name="description" content="A sticky, accessible navigation bar with a dropdown and a mobile drawer." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#content">Skip to content</a>
+
+  <header class="navbar">
+    <nav class="wrap" aria-label="Primary">
+      <a class="logo" href="#content">
+        <span class="dot" aria-hidden="true">N</span> Navik
+      </a>
+
+      <ul class="menu" id="menu">
+        <li><a href="#content" class="active">Home</a></li>
+
+        <li class="dropdown">
+          <button class="dropdown-btn" type="button" aria-expanded="false" aria-controls="products-menu">
+            Products
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </button>
+          <ul class="dropdown-menu" id="products-menu">
+            <li><a href="#features">Analytics <small>Dashboards and reports</small></a></li>
+            <li><a href="#features">Automation <small>Rules and workflows</small></a></li>
+            <li><a href="#features">Integrations <small>Connect your stack</small></a></li>
+          </ul>
+        </li>
+
+        <li><a href="#features">Features</a></li>
+        <li><a href="#notes">Notes</a></li>
+        <li><a href="#content" class="cta-link">Sign up</a></li>
+      </ul>
+
+      <button class="hamburger" id="hamburger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu">
+        <span class="lines" aria-hidden="true"></span>
+      </button>
+    </nav>
+  </header>
+
+  <div class="backdrop" id="backdrop" hidden></div>
+
+  <main class="wrap demo" id="content">
+    <h1>Responsive navigation bar</h1>
+    <p class="lead">
+      Resize the window past <code>860px</code> to see the bar swap between its two
+      modes. Everything below exists only to give the sticky header something to
+      scroll over.
+    </p>
+
+    <section id="features">
+      <h2>What this navbar does</h2>
+      <ul>
+        <li>Sticks to the top with a blurred, translucent background.</li>
+        <li>Collapses into a hamburger drawer below <code>860px</code>.</li>
+        <li>Animates the hamburger into a close (X) icon when open.</li>
+        <li>Turns the desktop dropdown into an inline accordion on mobile.</li>
+        <li>Closes on <kbd>Escape</kbd>, on backdrop click, or on outside click.</li>
+        <li>Traps nothing and hijacks nothing — plain links, fully keyboard operable.</li>
+      </ul>
+    </section>
+
+    <section id="notes">
+      <h2>Accessibility notes</h2>
+      <ul>
+        <li><code>aria-expanded</code> on both toggles reflects the real open state.</li>
+        <li><code>aria-controls</code> points each button at the element it opens.</li>
+        <li>The dropdown trigger is a <code>&lt;button&gt;</code>, not a link — it goes nowhere.</li>
+        <li>A skip link (press <kbd>Tab</kbd> on load) jumps straight to the content.</li>
+        <li>Focus returns to the hamburger when the drawer closes with <kbd>Escape</kbd>.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Scroll filler</h2>
+      <p class="lead">
+        The header stays put while this scrolls beneath it. On mobile the drawer
+        also locks page scrolling so the background does not move behind it.
+      </p>
+      <p class="lead">
+        Media queries do the layout work; JavaScript only manages open/closed state
+        and the matching ARIA attributes.
+      </p>
+    </section>
+
+    <a class="back" href="../../index.html">&larr; Back to the portfolio</a>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

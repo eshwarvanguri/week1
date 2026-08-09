@@ -1,0 +1,125 @@
+/* Task 4 — feature cards with Flexbox and CSS Grid. */
+
+:root {
+  --bg: #ffffff;
+  --bg-soft: #f5f7fb;
+  --ink: #14161f;
+  --muted: #5c6377;
+  --brand: #d9480f;
+  --brand-soft: #fff0e7;
+  --border: #e4e7ef;
+  --radius: 16px;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--sans);
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.65;
+}
+
+h1, h2, h3 { line-height: 1.2; letter-spacing: -.02em; margin: 0 0 .4em; }
+h1 { font-size: clamp(1.9rem, 5vw, 2.9rem); }
+h2 { font-size: 1.55rem; }
+h3 { font-size: 1.08rem; }
+
+code {
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  padding: 1px 6px;
+  border-radius: 5px;
+  font-size: .88em;
+}
+
+:focus-visible { outline: 3px solid var(--brand); outline-offset: 3px; }
+
+.wrap { width: 100%; max-width: 1100px; margin-inline: auto; padding-inline: 20px; }
+
+.page-head {
+  padding: 64px 0 48px;
+  background: linear-gradient(180deg, var(--brand-soft), transparent);
+  border-bottom: 1px solid var(--border);
+}
+.page-head p { color: var(--muted); max-width: 62ch; margin: 0; }
+
+.eyebrow {
+  display: inline-block;
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--brand);
+  margin-bottom: 6px;
+}
+
+section { padding: 58px 0; }
+section + section { border-top: 1px solid var(--border); }
+.section-head { max-width: 66ch; margin-bottom: 30px; }
+.section-head p { color: var(--muted); margin: 0; }
+
+/* ---------- the card itself (layout-agnostic) ---------- */
+
+.card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 26px;
+  box-shadow: 0 1px 2px rgba(20, 22, 31, .05), 0 10px 26px rgba(20, 22, 31, .06);
+  transition: transform .18s ease, border-color .18s ease;
+}
+.card:hover { transform: translateY(-4px); border-color: var(--brand); }
+.card p { margin: 0; color: var(--muted); font-size: .95rem; }
+
+.ico {
+  display: grid;
+  place-items: center;
+  width: 46px; height: 46px;
+  border-radius: 12px;
+  background: var(--brand-soft);
+  font-size: 1.35rem;
+  margin-bottom: 14px;
+}
+
+/* ---------- layout 1: Flexbox ----------
+   flex-basis sets the ideal width; grow lets the last row fill the space. */
+
+.flex-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+}
+.flex-cards .card { flex: 1 1 260px; }
+
+/* ---------- layout 2: Grid ----------
+   auto-fit collapses empty tracks, minmax stops cards from getting too narrow. */
+
+.grid-cards {
+  display: grid;
+  gap: 22px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+/* ---------- layout 3: a two-dimensional bento grid ---------- */
+
+.bento {
+  display: grid;
+  gap: 22px;
+  grid-template-columns: 1fr;
+}
+.bento .feature-lg { background: linear-gradient(150deg, var(--brand-soft), var(--bg)); }
+
+@media (min-width: 720px) {
+  .bento { grid-template-columns: repeat(4, 1fr); }
+  /* Only Grid can do this: two columns wide and two rows tall at once. */
+  .bento .feature-lg { grid-column: span 2; grid-row: span 2; }
+}
+
+.back { display: inline-block; margin-bottom: 60px; color: var(--brand); }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition-duration: .01ms !important; }
+}

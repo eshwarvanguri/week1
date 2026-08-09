@@ -1,0 +1,209 @@
+/* Task 7 — dark mode toggle.
+
+   Every colour on this page is a custom property. Switching theme rewrites the
+   tokens, not the rules, so nothing below the token block needs to know which
+   theme is active.
+
+   Three sources decide the theme, in this order of priority:
+     1. [data-theme] on <html>  — the visitor's explicit choice
+     2. prefers-color-scheme    — the operating system setting
+     3. :root defaults          — light
+*/
+
+:root {
+  --bg: #ffffff;
+  --bg-soft: #f4f6fb;
+  --surface: #ffffff;
+  --border: #e2e6f0;
+  --ink: #16181d;
+  --muted: #5b6272;
+  --brand: #6d28d9;
+  --brand-soft: #f1ebff;
+  --shadow: 0 1px 2px rgba(16, 20, 40, .06), 0 14px 34px rgba(16, 20, 40, .08);
+}
+
+/* OS preference — skipped when the visitor has explicitly chosen light. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0d1016;
+    --bg-soft: #141922;
+    --surface: #161b25;
+    --border: #262d3a;
+    --ink: #e9ecf3;
+    --muted: #98a1b4;
+    --brand: #a78bfa;
+    --brand-soft: #241c3d;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .35), 0 14px 34px rgba(0, 0, 0, .4);
+  }
+}
+
+/* Explicit choice — wins over the OS in both directions. */
+:root[data-theme="dark"] {
+  --bg: #0d1016;
+  --bg-soft: #141922;
+  --surface: #161b25;
+  --border: #262d3a;
+  --ink: #e9ecf3;
+  --muted: #98a1b4;
+  --brand: #a78bfa;
+  --brand-soft: #241c3d;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .35), 0 14px 34px rgba(0, 0, 0, .4);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.65;
+  /* The one place a transition is worth it: the page-wide colour swap. */
+  transition: background-color .3s ease, color .3s ease;
+}
+
+h1, h2, h3 { line-height: 1.2; letter-spacing: -.02em; margin: 0 0 .4em; }
+h1 { font-size: clamp(1.9rem, 5vw, 2.7rem); }
+h2 { font-size: 1.4rem; }
+h3 { font-size: 1.05rem; }
+
+code {
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  padding: 1px 6px;
+  border-radius: 5px;
+  font-size: .88em;
+}
+
+:focus-visible { outline: 3px solid var(--brand); outline-offset: 3px; border-radius: 6px; }
+
+.wrap { width: 100%; max-width: 820px; margin-inline: auto; padding-inline: 20px; }
+
+/* ---------- header + toggle ---------- */
+
+.top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+}
+.brand { font-weight: 800; margin-right: auto; }
+
+/* A pill switch styled from a real checkbox, so it stays keyboard operable
+   and announces its state without extra ARIA. */
+.switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+  font-size: .9rem;
+  font-weight: 600;
+}
+.switch input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.track {
+  position: relative;
+  width: 58px;
+  height: 32px;
+  border-radius: 999px;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  transition: background-color .25s ease;
+}
+.thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--brand);
+  display: grid;
+  place-items: center;
+  font-size: .8rem;
+  transition: transform .25s ease;
+}
+.switch input:checked + .track .thumb { transform: translateX(26px); }
+.switch input:focus-visible + .track { outline: 3px solid var(--brand); outline-offset: 3px; }
+
+.icon-moon, .icon-sun { line-height: 1; }
+.icon-sun { display: none; }
+.switch input:checked + .track .icon-sun { display: block; }
+.switch input:checked + .track .icon-moon { display: none; }
+
+/* ---------- content ---------- */
+
+main { padding: 44px 0 70px; }
+
+.lead { color: var(--muted); font-size: 1.05rem; max-width: 60ch; }
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: var(--shadow);
+  transition: background-color .3s ease, border-color .3s ease;
+}
+
+.grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  margin: 32px 0;
+}
+.card p { color: var(--muted); margin: 0; font-size: .94rem; }
+
+.swatches { display: flex; flex-wrap: wrap; gap: 10px; margin: 24px 0 34px; }
+.swatch {
+  flex: 1 1 96px;
+  height: 74px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  display: grid;
+  place-items: end center;
+  padding-bottom: 6px;
+  font-size: .7rem;
+  color: var(--muted);
+  transition: background-color .3s ease;
+}
+.sw-bg { background: var(--bg); }
+.sw-soft { background: var(--bg-soft); }
+.sw-surface { background: var(--surface); }
+.sw-brand { background: var(--brand); color: var(--bg); }
+.sw-ink { background: var(--ink); color: var(--bg); }
+
+.note {
+  border-left: 3px solid var(--brand);
+  background: var(--brand-soft);
+  padding: 14px 18px;
+  border-radius: 0 12px 12px 0;
+  margin: 28px 0;
+}
+.note p { margin: 0; font-size: .93rem; }
+
+ul.plain { color: var(--muted); padding-left: 20px; }
+ul.plain li { margin-bottom: 8px; }
+
+.status {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--brand-soft);
+  color: var(--brand);
+  font-size: .85rem;
+  font-weight: 700;
+}
+
+.back { display: inline-block; margin-top: 20px; color: var(--brand); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: .01ms !important; }
+}

@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Environment / secrets
+.env
+.env.local
+*.pem
+
+# Editor & OS noise
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Build & deploy output
+dist/
+build/
+.vercel/
+.cache/
+
+# Logs
+*.log
+npm-debug.log*

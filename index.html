@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eshwar Vanguri — Web Developer Portfolio</title>
+  <meta name="description" content="Portfolio of Eshwar Vanguri — responsive websites built with HTML5, CSS3 and modern JavaScript." />
+  <meta name="author" content="Eshwar Vanguri" />
+  <meta name="theme-color" content="#3b5bfd" />
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#128187;</text></svg>" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+
+  <script>
+    // Apply the saved theme before first paint so the page never flashes
+    // the wrong colours on load.
+    (() => {
+      const saved = localStorage.getItem('portfolio-theme');
+      if (saved) document.documentElement.dataset.theme = saved;
+    })();
+  </script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ============================ NAVIGATION ============================ -->
+  <header class="nav">
+    <nav class="wrap" aria-label="Primary">
+      <a class="brand" href="#home">Eshwar<span>.</span></a>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <button class="icon-btn" id="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark mode">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+        </svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
+        </svg>
+      </button>
+
+      <button class="icon-btn nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <path d="M3 6h18M3 12h18M3 18h18" />
+        </svg>
+      </button>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!-- ============================== HERO ============================== -->
+    <section class="hero" id="home">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="eyebrow">Frontend Developer</span>
+          <h1>Hi, I'm Eshwar Vanguri.</h1>
+          <p class="lead">
+            I build fast, accessible and fully responsive websites with HTML5, CSS3
+            and modern JavaScript. Currently deepening my full-stack skills through
+            the Traidix Tech program.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#projects">View my work</a>
+            <a class="btn btn-ghost" href="assets/resume.pdf" download>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" />
+              </svg>
+              Download resume
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-media">
+          <div class="avatar" role="img" aria-label="Portrait placeholder with the initials E V">EV</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================= ABOUT ============================== -->
+    <section id="about">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">About me</span>
+          <h2>Turning ideas into clean, usable interfaces</h2>
+        </div>
+
+        <div class="about-grid">
+          <div>
+            <p>
+              I'm a developer who enjoys the part of the job where a rough sketch turns
+              into something people can actually click. My focus is the frontend:
+              semantic markup, a layout that holds up on every screen size, and
+              JavaScript that stays readable six months later.
+            </p>
+            <p>
+              Week one of the Traidix Tech program covered the fundamentals end to
+              end — the request/response cycle, semantic HTML5, Flexbox and Grid,
+              responsive design, ES6+ JavaScript, DOM events, and Git. Everything on
+              this site was built while working through those topics.
+            </p>
+            <p>
+              Outside of coursework I'm usually reading up on accessibility or
+              rebuilding an interface I liked to see how it was put together.
+            </p>
+          </div>
+
+          <div class="stats">
+            <div class="card stat"><b>10</b><span>Topics covered</span></div>
+            <div class="card stat"><b>7</b><span>Hands-on tasks</span></div>
+            <div class="card stat"><b>1</b><span>Mini project</span></div>
+            <div class="card stat"><b>100%</b><span>Responsive</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================= SKILLS ============================= -->
+    <section id="skills">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Skills</span>
+          <h2>What I work with</h2>
+          <p>The toolkit I picked up and practised during week one.</p>
+        </div>
+
+        <div class="grid">
+          <article class="card skill-group">
+            <div class="card-icon" aria-hidden="true">&#60;/&#62;</div>
+            <h3>Markup &amp; Styling</h3>
+            <ul class="tags">
+              <li>HTML5</li><li>Semantic HTML</li><li>CSS3</li>
+              <li>Flexbox</li><li>CSS Grid</li><li>Media Queries</li>
+            </ul>
+          </article>
+
+          <article class="card skill-group">
+            <div class="card-icon" aria-hidden="true">&#9881;</div>
+            <h3>JavaScript</h3>
+            <ul class="tags">
+              <li>ES6+</li><li>DOM API</li><li>Events</li>
+              <li>Fetch</li><li>localStorage</li><li>Modules</li>
+            </ul>
+          </article>
+
+          <article class="card skill-group">
+            <div class="card-icon" aria-hidden="true">&#9878;</div>
+            <h3>Tooling</h3>
+            <ul class="tags">
+              <li>Git</li><li>GitHub</li><li>VS Code</li>
+              <li>GitHub Pages</li><li>Vercel</li><li>DevTools</li>
+            </ul>
+          </article>
+
+          <article class="card skill-group">
+            <div class="card-icon" aria-hidden="true">&#9855;</div>
+            <h3>Fundamentals</h3>
+            <ul class="tags">
+              <li>Responsive design</li><li>Accessibility</li>
+              <li>HTTP basics</li><li>Frontend vs Backend</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================== PROJECTS ============================= -->
+    <section id="projects">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Portfolio</span>
+          <h2>Projects &amp; exercises</h2>
+          <p>Every hands-on task from week one, each one a standalone page you can open.</p>
+        </div>
+
+        <div class="grid">
+          <article class="card project">
+            <div class="thumb" aria-hidden="true">&#128196;</div>
+            <h3>First Web Page</h3>
+            <p>A semantic HTML5 document — headings, lists, tables, images, links and a form, with no CSS to hide behind.</p>
+            <div class="links"><a href="tasks/01-first-webpage/index.html">Open &rarr;</a></div>
+          </article>
+
+          <article class="card project">
+            <div class="thumb" aria-hidden="true">&#127912;</div>
+            <h3>Responsive Landing Page</h3>
+            <p>A product landing page built with HTML and CSS: hero, features, pricing and footer, fluid from 320px up.</p>
+            <div class="links"><a href="tasks/02-landing-page/index.html">Open &rarr;</a></div>
+          </article>
+
+          <article class="card project">
+            <div class="thumb" aria-hidden="true">&#9776;</div>
+            <h3>Responsive Navigation Bar</h3>
+            <p>A sticky navbar with a dropdown and a hamburger menu that turns into a slide-in drawer on mobile.</p>
+            <div class="links"><a href="tasks/03-navbar/index.html">Open &rarr;</a></div>
+          </article>
+
+          <article class="card project">
+            <div class="thumb" aria-hidden="true">&#129513;</div>
+            <h3>Feature Cards</h3>
+            <p>The same card set laid out twice — once with Flexbox, once with CSS Grid — to compare how each one wraps.</p>
+            <div class="links"><a href="tasks/04-feature-cards/index.html">Open &rarr;</a></div>
+          </article>
+
+          <article class="card project">
+            <div class="thumb" aria-hidden="true">&#9993;</div>
+            <h3>Contact Form</h3>
+            <p>An accessible form with labels, fieldsets, native HTML validation and clear focus and error states.</p>
+            <div class="links"><a href="tasks/05-contact-form/index.html">Open &rarr;</a></div>
+          </article>
+
+          <article class="card project">
+            <div class="thumb" aria-hidden="true">&#128290;</div>
+            <h3>Counter App</h3>
+            <p>A JavaScript counter with a step size, min/max limits, keyboard shortcuts and a value that survives reload.</p>
+            <div class="links"><a href="tasks/06-counter-app/index.html">Open &rarr;</a></div>
+          </article>
+
+          <article class="card project">
+            <div class="thumb" aria-hidden="true">&#127769;</div>
+            <h3>Dark Mode Toggle</h3>
+            <p>A theme switcher built on CSS custom properties that respects the OS setting and remembers your choice.</p>
+            <div class="links"><a href="tasks/07-dark-mode/index.html">Open &rarr;</a></div>
+          </article>
+
+          <article class="card project">
+            <div class="thumb" aria-hidden="true">&#11088;</div>
+            <h3>This Portfolio</h3>
+            <p>The mini project — every piece above assembled into one responsive site with scroll-spy navigation.</p>
+            <div class="links"><a href="#home">Back to top &rarr;</a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ CONTACT ============================= -->
+    <section id="contact">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Contact</span>
+          <h2>Let's build something</h2>
+          <p>Got a project, a question or an opportunity? Drop me a line.</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="card">
+            <ul class="contact-list">
+              <li>
+                <span>Email</span>
+                <a href="mailto:eshwarvanguri@gmail.com">eshwarvanguri@gmail.com</a>
+              </li>
+              <li>
+                <span>Location</span>
+                <a href="#contact">India &middot; open to remote</a>
+              </li>
+              <li>
+                <span>Resume</span>
+                <a href="assets/resume.pdf" download>Download PDF</a>
+              </li>
+            </ul>
+
+            <div class="socials">
+              <a href="https://github.com/eshwarvanguri" aria-label="GitHub" rel="noopener noreferrer" target="_blank">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.34-1.3-1.7-1.3-1.7-1.05-.72.08-.71.08-.71 1.16.08 1.78 1.2 1.78 1.2 1.03 1.78 2.7 1.27 3.36.97.1-.75.4-1.27.73-1.56-2.56-.29-5.25-1.28-5.25-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.12 3.05.74.81 1.18 1.84 1.18 3.1 0 4.43-2.69 5.4-5.26 5.69.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"/></svg>
+              </a>
+              <a href="https://www.linkedin.com/in/eshwarvanguri" aria-label="LinkedIn" rel="noopener noreferrer" target="_blank">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.76V21h-4v-5.6c0-1.34-.03-3.06-1.9-3.06-1.9 0-2.2 1.45-2.2 2.96V21H9z"/></svg>
+              </a>
+              <a href="https://twitter.com/" aria-label="Twitter" rel="noopener noreferrer" target="_blank">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.1 8.1L23 22h-6.6l-5.1-6.7L5.4 22H2.3l7.6-8.7L1.7 2h6.8l4.6 6.1zm-1.1 18h1.7L7.3 3.8H5.5z"/></svg>
+              </a>
+              <a href="mailto:eshwarvanguri@gmail.com" aria-label="Email">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2zm2.4.5L12 11.7l7.6-6.2zM20 8.3l-7.4 6a1 1 0 0 1-1.2 0L4 8.3V19h16z"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <form class="card" id="contact-form" novalidate>
+            <div class="field">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="Your name" autocomplete="name" required />
+              <span class="error" id="name-error" role="alert"></span>
+            </div>
+
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" required />
+              <span class="error" id="email-error" role="alert"></span>
+            </div>
+
+            <div class="field">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" placeholder="What's this about?" required />
+              <span class="error" id="subject-error" role="alert"></span>
+            </div>
+
+            <div class="field">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="Tell me a bit more…" required></textarea>
+              <span class="error" id="message-error" role="alert"></span>
+            </div>
+
+            <button class="btn btn-primary" type="submit">Send message</button>
+            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <p>&copy; <span id="year">2026</span> Eshwar Vanguri. Built for Traidix Tech — Week 1.</p>
+      <p>HTML5 &middot; CSS3 &middot; JavaScript</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

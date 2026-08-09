@@ -1,0 +1,218 @@
+/* Task 5 — contact form styling.
+   Validation feedback is pure CSS: :user-invalid fires only after the visitor
+   has interacted with a field, so nothing turns red before they have typed.
+   :invalid is kept as a fallback for browsers without :user-invalid. */
+
+:root {
+  --bg: #eef1f8;
+  --surface: #ffffff;
+  --ink: #14161f;
+  --muted: #5c6377;
+  --brand: #1d64d8;
+  --brand-soft: #e8f0ff;
+  --border: #d9dfea;
+  --danger: #d92d20;
+  --ok: #0f9d58;
+  --radius: 18px;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--sans);
+  color: var(--ink);
+  background:
+    radial-gradient(800px 400px at 80% -10%, var(--brand-soft), transparent 70%),
+    var(--bg);
+  line-height: 1.6;
+}
+
+h1 { font-size: clamp(1.8rem, 4.5vw, 2.4rem); line-height: 1.15; letter-spacing: -.02em; margin: 0 0 .4em; }
+
+:focus-visible { outline: 3px solid var(--brand); outline-offset: 3px; border-radius: 4px; }
+
+.page {
+  width: 100%;
+  max-width: 1000px;
+  margin-inline: auto;
+  padding: 48px 20px 60px;
+}
+
+.card {
+  display: grid;
+  grid-template-columns: 1fr;
+  background: var(--surface);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(20, 22, 31, .05), 0 26px 60px rgba(20, 22, 31, .10);
+}
+
+/* ---------- left panel ---------- */
+
+.intro {
+  padding: 40px 34px;
+  background: linear-gradient(160deg, var(--brand), #4f8bff);
+  color: #fff;
+}
+.intro p { color: rgba(255, 255, 255, .88); margin: 0 0 26px; }
+.eyebrow {
+  display: inline-block;
+  font-size: .76rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  opacity: .85;
+  margin-bottom: 6px;
+}
+
+.details { list-style: none; margin: 0; padding: 0; }
+.details li { display: flex; align-items: center; gap: 13px; margin-bottom: 16px; }
+.details .ico {
+  display: grid;
+  place-items: center;
+  width: 38px; height: 38px;
+  flex: 0 0 auto;
+  border-radius: 11px;
+  background: rgba(255, 255, 255, .18);
+}
+.details small { display: block; font-size: .74rem; text-transform: uppercase; letter-spacing: .08em; opacity: .8; }
+.details a, .details span:not(.ico) { color: #fff; text-decoration: none; font-weight: 600; }
+.details a:hover { text-decoration: underline; }
+
+/* ---------- form ---------- */
+
+.form { padding: 40px 34px; }
+
+.row { display: grid; grid-template-columns: 1fr; gap: 0 18px; }
+
+.field { margin-bottom: 18px; border: 0; padding: 0; }
+
+.field label,
+.field legend {
+  display: block;
+  font-size: .88rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  padding: 0;
+}
+.req { color: var(--danger); }
+.optional { color: var(--muted); font-weight: 500; }
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea {
+  width: 100%;
+  padding: 12px 14px;
+  font: inherit;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+textarea { resize: vertical; min-height: 130px; }
+
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235c6377' stroke-width='2.5' stroke-linecap='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 16px;
+  padding-right: 40px;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--brand);
+  box-shadow: 0 0 0 3px var(--brand-soft);
+}
+
+.hint { display: block; margin-top: 5px; font-size: .8rem; color: var(--muted); }
+
+/* Validation states. :user-invalid waits for a blur or a submit attempt. */
+input:user-invalid,
+select:user-invalid,
+textarea:user-invalid { border-color: var(--danger); }
+
+input:user-invalid ~ .hint,
+select:user-invalid ~ .hint,
+textarea:user-invalid ~ .hint { color: var(--danger); }
+
+input:user-valid,
+select:user-valid,
+textarea:user-valid { border-color: var(--ok); }
+
+/* Fallback for browsers without :user-invalid — only after a submit attempt. */
+form:invalid input:invalid:not(:placeholder-shown),
+form:invalid textarea:invalid:not(:placeholder-shown) { border-color: var(--danger); }
+
+/* ---------- radios, checkbox, range ---------- */
+
+.radios { display: flex; flex-wrap: wrap; gap: 10px; }
+
+.choice {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 15px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: .92rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color .15s ease, background-color .15s ease;
+}
+.choice:hover { border-color: var(--brand); }
+.choice input { accent-color: var(--brand); width: 17px; height: 17px; margin: 0; }
+.choice:has(input:checked) { border-color: var(--brand); background: var(--brand-soft); }
+
+.consent {
+  align-items: flex-start;
+  border-radius: 12px;
+  margin-bottom: 22px;
+  line-height: 1.45;
+}
+
+input[type="range"] { width: 100%; accent-color: var(--brand); padding: 0; }
+
+/* ---------- actions ---------- */
+
+.actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+.btn {
+  padding: 13px 26px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform .15s ease, background-color .15s ease;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn-primary { background: var(--brand); color: #fff; }
+.btn-ghost { background: transparent; border-color: var(--border); color: var(--ink); }
+.btn-ghost:hover { border-color: var(--brand); color: var(--brand); }
+
+.footnote { margin: 20px 0 0; font-size: .82rem; color: var(--muted); }
+
+.back { display: inline-block; margin-top: 26px; color: var(--brand); }
+
+/* ---------- responsive ---------- */
+
+@media (min-width: 560px) {
+  .row { grid-template-columns: 1fr 1fr; }
+}
+
+@media (min-width: 900px) {
+  .card { grid-template-columns: .85fr 1.15fr; }
+  .intro { padding: 48px 38px; }
+  .form { padding: 48px 40px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition-duration: .01ms !important; }
+}

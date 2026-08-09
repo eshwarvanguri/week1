@@ -1,0 +1,30 @@
+📚 Topics
+Introduction to Web Development
+Internet & How the Web Works
+Frontend vs Backend
+HTML5 Fundamentals & Semantic HTML
+CSS3 Fundamentals
+Flexbox & CSS Grid
+Responsive Web Design
+JavaScript (ES6+) Basics
+DOM Manipulation & Events
+Git & GitHub Basics
+
+
+💻 Hands-on Tasks
+Set up VS Code, Git, and GitHub
+Create your first HTML webpage
+Design a responsive landing page using HTML & CSS
+Build a responsive navigation bar
+Create responsive feature cards using Flexbox/Grid
+Build a contact form with HTML & CSS
+Develop a JavaScript Counter App
+Implement a Dark Mode Toggle using JavaScript
+Push all code to a GitHub repository with a proper README
+Deploy your website using GitHub Pages or Vercel
+
+🚀 Mini Project
+Personal Portfolio Website Features: Responsive Navigation Bar Hero Section 
+About Me Skills Section Projects Showcase Contact Form
+ Social Media Links Resume Download Button Dark Mode Toggle (Bonus) 
+ Mobile Responsive Design

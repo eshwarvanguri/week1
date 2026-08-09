@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task 7 — Dark Mode Toggle</title>
+  <meta name="description" content="A dark mode toggle built on CSS custom properties, respecting the OS preference and remembering the visitor's choice." />
+  <link rel="stylesheet" href="style.css" />
+
+  <script>
+    /* Runs before the body parses. Reading the saved theme here — rather than
+       in the deferred script — is what prevents the white flash on load. */
+    (() => {
+      const saved = localStorage.getItem('theme');
+      if (saved === 'dark' || saved === 'light') {
+        document.documentElement.dataset.theme = saved;
+      }
+    })();
+  </script>
+</head>
+
+<body>
+  <div class="wrap">
+    <header class="top">
+      <span class="brand">Theme Lab</span>
+
+      <label class="switch" for="theme-switch">
+        <span id="switch-label">Dark mode</span>
+        <input type="checkbox" id="theme-switch" role="switch" aria-labelledby="switch-label" />
+        <span class="track" aria-hidden="true">
+          <span class="thumb">
+            <span class="icon-moon">&#127769;</span>
+            <span class="icon-sun">&#9728;</span>
+          </span>
+        </span>
+      </label>
+    </header>
+
+    <main>
+      <h1>Dark mode, done properly</h1>
+      <p class="lead">
+        Toggle the switch above. Then change your operating system's appearance
+        setting and reload — the page follows the OS until you make a choice of
+        your own, and remembers that choice from then on.
+      </p>
+
+      <p>Current theme: <span class="status" id="status">light</span></p>
+
+      <div class="swatches">
+        <div class="swatch sw-bg">--bg</div>
+        <div class="swatch sw-soft">--bg-soft</div>
+        <div class="swatch sw-surface">--surface</div>
+        <div class="swatch sw-brand">--brand</div>
+        <div class="swatch sw-ink">--ink</div>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <h3>Tokens, not rules</h3>
+          <p>Colours live in CSS custom properties. Switching theme rewrites the token block; every rule below it stays untouched.</p>
+        </article>
+        <article class="card">
+          <h3>OS first</h3>
+          <p><code>prefers-color-scheme</code> sets the default, so first-time visitors already get the theme their device asked for.</p>
+        </article>
+        <article class="card">
+          <h3>Choice wins</h3>
+          <p>A <code>data-theme</code> attribute on <code>&lt;html&gt;</code> overrides the OS in both directions and is saved to <code>localStorage</code>.</p>
+        </article>
+      </div>
+
+      <div class="note">
+        <p>
+          <strong>The flash problem.</strong> If the saved theme is applied by a
+          script at the end of the body, the browser paints the light page first
+          and then repaints dark — a visible white flash. The fix is the small
+          inline script in <code>&lt;head&gt;</code>, which runs before anything
+          renders.
+        </p>
+      </div>
+
+      <h2>How it works, step by step</h2>
+      <ul class="plain">
+        <li><code>:root</code> defines the light palette as the baseline.</li>
+        <li>A <code>prefers-color-scheme: dark</code> block redefines those tokens for the OS preference.</li>
+        <li>A <code>:root[data-theme="dark"]</code> block redefines them again, so an explicit choice outranks the OS.</li>
+        <li>The guard <code>:root:not([data-theme="light"])</code> on the media query lets someone force light on a dark OS.</li>
+        <li>The toggle writes <code>data-theme</code> and saves it; a <code>matchMedia</code> listener keeps following the OS until it does.</li>
+      </ul>
+
+      <h2>Accessibility</h2>
+      <ul class="plain">
+        <li>The switch is a real checkbox with <code>role="switch"</code> — it toggles with <kbd>Space</kbd> and announces its state.</li>
+        <li>Both palettes were checked for at least 4.5:1 contrast on body text.</li>
+        <li>The colour transition is disabled under <code>prefers-reduced-motion</code>.</li>
+      </ul>
+
+      <p><a class="back" href="../../index.html">&larr; Back to the portfolio</a></p>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
